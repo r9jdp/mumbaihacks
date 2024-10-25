@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model assets {
+  sr_no           Int    @id @default(autoincrement())
+  userid          String @db.Uuid
+  account_details Int?   @default(0)
+  stocks          Int?   @default(0)
+  bonds           Int?   @default(0)
+  mutual_funds    Int?   @default(0)
+  real_estate     Int?   @default(0)
+  jewellery       Int?   @default(0)
+  crypto          Int?   @default(0)
+  automobiles     Int?   @default(0)
+  users           users  @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model family_members {
+  sr_no                   Int    @id @default(autoincrement())
+  userid                  String @db.Uuid
+  family_member_liability Float?
+  family_member_asset     Float?
+  users                   users  @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model futuregoals {
+  sr_no                        Int                           @id @default(autoincrement())
+  userid                       String                        @db.Uuid
+  risk_tolerance               risk_tolerance?
+  financial_goals              financial_goals?
+  investment_preferences       investment_preferences[]
+  investment_time_horizon      investment_time_horizon?
+  preferred_sectors            preferred_sectors[]
+  initial_investment           Decimal?                      @db.Decimal
+  regular_investment           Decimal?                      @db.Decimal
+  market_sentiment_sensitivity market_sentiment_sensitivity?
+  created_at                   DateTime?                     @default(now()) @db.Timestamp(6)
+  anything_else                String?                       @db.VarChar(500)
+  users                        users                         @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model liabilities {
+  sr_no            Int    @id @default(autoincrement())
+  userid           String @db.Uuid
+  home_loan        Int?   @default(0)
+  car_loan         Int?   @default(0)
+  student_loan     Int?   @default(0)
+  personal_loan    Int?   @default(0)
+  payable_bills    Int?   @default(0)
+  credit_card_debt Int?   @default(0)
+  payable_taxes    Int?   @default(0)
+  users            users  @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model other_assets {
+  sr_no       Int     @id @default(autoincrement())
+  userid      String  @db.Uuid
+  name        String  @db.VarChar(100)
+  description String? @db.VarChar(500)
+  users       users   @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model other_liabilities {
+  sr_no       Int     @id @default(autoincrement())
+  userid      String  @db.Uuid
+  name        String  @db.VarChar(100)
+  description String? @db.VarChar(500)
+  users       users   @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model users {
+  userid            String              @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  username          String              @unique @db.VarChar(100)
+  password          String              @db.VarChar(500)
+  assets            assets[]
+  family_members    family_members[]
+  futuregoals       futuregoals[]
+  liabilities       liabilities[]
+  other_assets      other_assets[]
+  other_liabilities other_liabilities[]
+}
+
+enum financial_goals {
+  Growth
+  Income
+  Balanced
+}
+
+enum investment_preferences {
+  Stocks
+  Bonds
+  Cryptocurrencies
+  Mutual_Funds                          @map("Mutual Funds")
+  Real_Estate_Investment_Trusts__REITs_ @map("Real Estate Investment Trusts (REITs)")
+}
+
+enum investment_time_horizon {
+  Short_term  @map("Short-term")
+  Medium_term @map("Medium-term")
+  Long_term   @map("Long-term")
+}
+
+enum market_sentiment_sensitivity {
+  Not_at_all @map("Not at all")
+  Somewhat
+  Strongly
+}
+
+enum preferred_sectors {
+  Technology
+  Healthcare
+  Energy
+  Finance
+  Consumer_Goods @map("Consumer Goods")
+  Other
+}
+
+enum risk_tolerance {
+  Conservative
+  Moderate
+  Aggressive
+}
