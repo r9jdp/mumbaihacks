@@ -56,31 +56,16 @@ const Card = ({ dataImage, header, content }) => {
   };
 
   return (
-    <div
-      className="m-4 perspective cursor-pointer"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      ref={cardRef}
-      style={{ transformStyle: "preserve-3d" }}
-    >
+    <div className="m-4 perspective cursor-pointer">
       <div
         className="relative w-48 h-36 bg-gray-800 overflow-hidden rounded-lg shadow-lg transition-transform duration-700" // Adjusted width and height
         style={cardStyle}
       >
-        <div
-          className={`absolute inset-0 transition-opacity duration-500`}
-          style={{
-            ...cardBgStyle,
-            opacity: mousePosition.mouseX || mousePosition.mouseY ? 0.5 : 0.3,
-          }}
-        ></div>
-        <div className="absolute bottom-0 w-full p-5 text-white transform translate-y-16 transition-transform duration-500 hover:translate-y-0">
+        <div></div>
+        <div className="absolute bottom-0 w-full p-5 text-white ">
           <h1 className="font-serif text-xl font-bold shadow-lg">{header}</h1>{" "}
           {/* Reduced font size */}
-          <p className="opacity-0 transition-opacity duration-500 hover:opacity-100">
-            {content}
-          </p>
+          <p className="opacity-100">{content}</p>
         </div>
       </div>
     </div>

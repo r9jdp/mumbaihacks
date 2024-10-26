@@ -19,6 +19,7 @@
     "@mui/styled-engine-sc": "^6.1.5",
     "@mui/styles": "^6.1.5",
     "@mui/x-charts": "^7.22.0",
+    "axios": "^1.7.7",
     "d3": "^7.9.0",
     "flowbite": "^2.5.2",
     "flowbite-react": "^0.10.2",
