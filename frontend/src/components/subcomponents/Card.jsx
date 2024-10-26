@@ -78,22 +78,22 @@ const App = () => {
     {
       image: "/Assets/ic_glass_users.png",
       header: "Net worth",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      content: "1.35m",
     },
     {
       image: "/Assets/ic_glass_buy.png",
       header: "Assets",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      content: "40k",
     },
     {
       image: "/Assets/ic_glass_bag.png",
       header: "Liabilities",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      content: "50k",
     },
     {
       image: "/Assets/ic_glass_message.png",
       header: "Income",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      content: "1.5m",
     },
   ];
 

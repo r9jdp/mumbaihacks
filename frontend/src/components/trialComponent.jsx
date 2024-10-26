@@ -7,7 +7,6 @@ import CardComponent from "./subcomponents/GenAi";
 import axios from "axios";
 import PieChart from "./subcomponents/newPieChart";
 import { useEffect, useState } from "react";
-import { convertToJSON } from "../../../backend/utils/Parser";
 
 export default function Trial() {
   const { user, isAuthenticated } = useAuth0();
@@ -23,7 +22,7 @@ export default function Trial() {
         });
 
         // Assuming convertToJSON is a function you defined to parse Aidata
-        const aidata = await convertToJSON(response.data.Aidata);
+        const aidata = response.data.Aidata
 
         // Set the state with the necessary structure
         await setData({

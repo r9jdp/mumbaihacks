@@ -7,59 +7,54 @@ const CardComponent = () => {
   const cards = [
     {
       id: 1,
-      name: "Dan Jordan",
-      status: "At work",
-      message: "Hey Dude, how it's going? I need your help in something...",
+      name: "stocks", 
+      message: "Allocate 10% to large-cap stocks like Infosys and HCL Technologies...",
       image:
         "https://raw.githubusercontent.com/mhmoodlan/Spread-Messenger/master/assets/img/l1.jpeg",
     },
     {
       id: 2,
-      name: "Sarah Smith",
-      status: "Busy",
-      message: "Can we reschedule our meeting?",
+      name: "bonds",
+      message: "Invest in high-quality, short-term bonds with low credit risk to maintain liquidity and generate stable returns",
       image:
         "https://raw.githubusercontent.com/mhmoodlan/Spread-Messenger/master/assets/img/l2.jpeg",
     },
     {
-      id: 2,
-      name: "Sarah Smith",
-      status: "Busy",
-      message: "Can we reschedule our meeting?",
+      id: 3,
+      name: "cryptocurrencies",  
+      message: "Not recommended due to high market volatility and regulatory...",
       image:
-        "https://raw.githubusercontent.com/mhmoodlan/Spread-Messenger/master/assets/img/l2.jpeg",
+        "https://raw.githubusercontent.com/mhmoodlan/Spread-Messenger/master/assets/img/l3.jpeg",
     },
     {
-      id: 2,
-      name: "Sarah Smith",
-      status: "Busy",
-      message: "Can we reschedule our meeting?",
+      id: 4,
+      name: "mutual funds",
+      message: "Invest in a mix of multicap and sector-specific mutual funds to benefit from diversified portfolios",
       image:
-        "https://raw.githubusercontent.com/mhmoodlan/Spread-Messenger/master/assets/img/l2.jpeg",
+        "https://raw.githubusercontent.com/mhmoodlan/Spread-Messenger/master/assets/img/l4.jpeg",
     },
   ];
 
   return (
     <div className="grid grid-cols-2 gap-4 m-5 ml-12">
-      {cards.map((values) => {
+      {cards.map((card) => {
         return (
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div key={card.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
               <img
                 className="rounded-t-lg"
-                src="/docs/images/blog/image-1.jpg"
-                alt=""
+                src={card.image}
+                alt={card.name}
               />
             </a>
             <div className="p-5">
               <a href="#">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Noteworthy technology acquisitions 2021
+                  {card.name}
                 </h5>
               </a>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
+                {card.message}
               </p>
               <a
                 href="#"
