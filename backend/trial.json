@@ -1,0 +1,31 @@
+{
+  "assets": {
+    "money_in_account_details": 10000,
+    "stocks": {
+      "current_value": 2000,
+      "portfolio": []
+    },
+    "bonds": 5000,
+    "mutual_funds": 3000,
+    "real_estate": 15000,
+    "jewellery": 1000,
+    "crypto": {
+      "current_value": 4000,
+      "portfolio": []
+    },
+    "automobiles": 12000
+  },
+  "liabilities": {
+    "home_loan": 20000,
+    "car_loan": 5000,
+    "credit_card_debt": 1500
+  },
+  "goals": {
+    "risk_tolerance": "moderate",
+    "financial_goals": "Growth",
+    "investment_preferences": ["Stocks", "Mutual_Funds", "Real Estate"],
+    "investment_time_horizon": "Long_term",
+    "preferred_sectors": ["Technology", "Healthcare", "Finance"],
+    "amount_to_invest": 5300
+  }
+}

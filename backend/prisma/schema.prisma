@@ -9,7 +9,7 @@ datasource db {
 
 model assets {
   sr_no           Int    @id @default(autoincrement())
-  userid          String @db.Uuid
+  userid          String
   account_details Int?   @default(0)
   stocks          Int?   @default(0)
   bonds           Int?   @default(0)
@@ -23,7 +23,7 @@ model assets {
 
 model family_members {
   sr_no                   Int    @id @default(autoincrement())
-  userid                  String @db.Uuid
+  userid                  String
   family_member_liability Float?
   family_member_asset     Float?
   users                   users  @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
@@ -31,24 +31,23 @@ model family_members {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model futuregoals {
-  sr_no                        Int                           @id @default(autoincrement())
-  userid                       String                        @db.Uuid
-  risk_tolerance               risk_tolerance?
-  financial_goals              financial_goals?
-  investment_preferences       investment_preferences[]
-  investment_time_horizon      investment_time_horizon?
-  preferred_sectors            preferred_sectors[]
-  initial_investment           Decimal?                      @db.Decimal
-  regular_investment           Decimal?                      @db.Decimal
-  market_sentiment_sensitivity market_sentiment_sensitivity?
-  created_at                   DateTime?                     @default(now()) @db.Timestamp(6)
-  anything_else                String?                       @db.VarChar(500)
-  users                        users                         @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
+  sr_no                   Int                      @id @default(autoincrement())
+  userid                  String
+  risk_tolerance          risk_tolerance?
+  financial_goals         financial_goals?
+  investment_preferences  investment_preferences[]
+  investment_time_horizon investment_time_horizon?
+  preferred_sectors       preferred_sectors[]
+  initial_investment      Decimal?                 @db.Decimal
+  regular_investment      Decimal?                 @db.Decimal
+  created_at              DateTime?                @default(now()) @db.Timestamp(6)
+  anything_else           String?                  @db.VarChar(500)
+  users                   users                    @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
 }
 
 model liabilities {
   sr_no            Int    @id @default(autoincrement())
-  userid           String @db.Uuid
+  userid           String
   home_loan        Int?   @default(0)
   car_loan         Int?   @default(0)
   student_loan     Int?   @default(0)
@@ -61,7 +60,7 @@ model liabilities {
 
 model other_assets {
   sr_no       Int     @id @default(autoincrement())
-  userid      String  @db.Uuid
+  userid      String
   name        String  @db.VarChar(100)
   description String? @db.VarChar(500)
   users       users   @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
@@ -69,16 +68,17 @@ model other_assets {
 
 model other_liabilities {
   sr_no       Int     @id @default(autoincrement())
-  userid      String  @db.Uuid
+  userid      String
   name        String  @db.VarChar(100)
   description String? @db.VarChar(500)
   users       users   @relation(fields: [userid], references: [userid], onDelete: Cascade, onUpdate: NoAction)
 }
 
 model users {
-  userid            String              @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  username          String              @unique @db.VarChar(100)
-  password          String              @db.VarChar(500)
+  userid            String              @id
+  email             String              @db.VarChar(100)
+  name              String
+  age               Int
   assets            assets[]
   family_members    family_members[]
   futuregoals       futuregoals[]
