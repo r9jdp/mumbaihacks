@@ -92,32 +92,32 @@ const App = () => {
   const cardData = [
     {
       image: "/Assets/ic_glass_users.png",
-      header: "Canyons",
+      header: "Net worth",
       content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
     {
       image: "/Assets/ic_glass_buy.png",
-      header: "Beaches",
+      header: "Assets",
       content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
     {
       image: "/Assets/ic_glass_bag.png",
-      header: "Trees",
+      header: "Liabilities",
       content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
     {
       image: "/Assets/ic_glass_message.png",
-      header: "Lakes",
+      header: "Income",
       content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center bg-white p-5 h-75%">
-      <h1 className="text-3xl font-bold mb-10 text-brown-800 text-center">
+    <div className="flex flex-col items-center justify-center bg-white p-5 h-75% rounded-xl">
+      <h1 className="text-5xl font-bold mb-10 ml-11 text-brown-800 w-full">
         Hi, Welcome Back
       </h1>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-start w-full">
         {cardData.map((item, index) => (
           <Card
             key={index}

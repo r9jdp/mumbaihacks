@@ -3,16 +3,20 @@ import Navbar from "./subcomponents/Navbar";
 import SidebarApp from "./subcomponents/Sidebar";
 import Card from "./subcomponents/Card";
 import Barchart from "./subcomponents/Barchart";
-import PieArcLabel from "./subcomponents/PieChart";
 import CardComponent from "./subcomponents/GenAi";
 
+import PieChart from "./subcomponents/newPieChart";
+
 export default function Trial() {
-  const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
-    useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   console.log(user);
+  const data = [
+    { label: "Debt", value: 18 },
+    { label: "Networth", value: 82 },
+  ];
   return (
     isAuthenticated && (
-      <>
+      <div className="flex flex-col">
         {/* <h1 className="font-black">Rjdp</h1>
         <button
           onClick={() =>
@@ -26,17 +30,21 @@ export default function Trial() {
           Log Out
         </button> */}
 
-        <SidebarApp />
-        <div className="flex flex-col">
-          <Navbar />
-          <Card />
-          <div className="flex ">
-            <Barchart />
-            <PieArcLabel />
+        <Navbar />
+        <div>
+          <div className="flex justify-between w-[82.2%]">
+            <SidebarApp />
+            <div className="mt-20">
+              <Card />
+              <div className="flex items-center">
+                <Barchart />
+                <PieChart data={data} />
+              </div>
+              {/* <CardComponent /> */}
+            </div>
           </div>
-          <CardComponent />
         </div>
-      </>
+      </div>
     )
   );
 }
