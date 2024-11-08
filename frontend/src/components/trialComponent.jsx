@@ -7,6 +7,8 @@ import CardComponent from "./subcomponents/GenAi";
 import axios from "axios";
 import PieChart from "./subcomponents/newPieChart";
 import { useEffect, useState } from "react";
+import styles from "./trialComponent.module.css"; 
+
 
 export default function Trial() {
   const { user, isAuthenticated } = useAuth0();
@@ -49,34 +51,24 @@ export default function Trial() {
   ];
   return (
     isAuthenticated && (
-      <div className="flex flex-col">
-        {/* <h1 className="font-black">Rjdp</h1>
-        <button
-          onClick={() =>
-            logout({
-              logoutParams: {
-                returnTo: `${window.location.origin}`,
-              },
-            })
-          }
-        >
-          Log Out
-        </button> */}
-
-        <Navbar />
-        <div>
-          <div className="flex justify-between w-[82.2%]">
-            <SidebarApp />
-            <div className="mt-20">
-              <Card />
-              <div className="flex items-center">
-                <Barchart />
-                <PieChart data={data} />
-              </div>
-              <CardComponent />
-            </div>
+      <div className={styles.container}>
+        {/* <div classname={styles.sidebar}>
+          <SidebarApp />
+        </div> */}
+        <div className={styles.layout}>
+          <Navbar />
+          <div className={styles.card}>
+            <Card />
           </div>
+          <div className={styles.charts}>
+            <Barchart />
+            <PieChart data={data} />
+          </div>
+          <div className={styles.genai}>
+            <CardComponent />
+          </div>  
         </div>
+
       </div>
     )
   );

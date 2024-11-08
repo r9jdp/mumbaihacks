@@ -1,0 +1,45 @@
+.container{
+    background: wheat;
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar{
+    display: flex;
+    flex:2;
+    background: #333;
+    height: auto;
+    position: fixed;
+    margin-top: 250px;
+    /* fixed top-0 left-0 z-1 w-[17.8%] mt-[4rem] h-screen transition-transform -translate-x-full sm:translate-x-0 */
+}
+
+.card{
+    background: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-left: 150px;
+    margin-top: 100px;
+}
+
+.charts{
+    border-radius: 20px;    
+    display: flex;
+    flex: 3;
+    background: #f4f4f4;
+    height: auto;
+    margin-left: 250px;
+    margin-top: 100px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.genai{
+    display: flex;
+    flex: 1;
+    height: auto;
+    margin-left: 250px;
+    margin-top: 100px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
