@@ -2,11 +2,6 @@ import React from "react";
 
 const Sidebar = () => {
   return (
-    <aside
-      id="default-sidebar"
-      className="fixed top-0 left-0 z-1 w-[17.8%] mt-[4rem] h-screen transition-transform -translate-x-full sm:translate-x-0"
-      aria-label="Sidebar"
-    >
       <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-900">
         <ul className="space-y-2 font-medium">
           {menuItems.map((item, index) => (
@@ -32,7 +27,6 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-    </aside>
   );
 };
 
